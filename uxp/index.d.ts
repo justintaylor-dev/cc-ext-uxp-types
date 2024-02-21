@@ -9439,6 +9439,17 @@ declare module "uxp" {
          * @returns - command object for a valid id null for an invalid id
          */
         getCommand(id: string): UxpCommandInfo;
+        _pluginInfo:{
+            developerPlugin: true
+            id: string
+            name: string
+            pluginPath: string
+            pluginType: number
+            privileged: false
+            source: string
+            uid: string
+            version: string
+        }
     }
     export const entrypoints: EntryPoints;
 }
