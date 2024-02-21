@@ -9453,6 +9453,25 @@ declare module "uxp" {
     }
     export const entrypoints: EntryPoints;
 }
+
+interface PluginBase {
+    _manifest: any; 
+    _enabled: boolean;
+    [Symbol('plugin')]: any; 
+    [Symbol('createdInJS')]: boolean;
+}
+
+interface PluginObject {
+    [Symbol('pluginBase')]: PluginBase;
+    enabled?: boolean;
+    id?: string;
+    manifest?: any;
+    name?: string;
+    version?: string;
+    showPanel: (panelId: string) => Promise<void>;
+    async invokeCommand: (commandId: string) => Promise<void>;
+}
+
 declare module "uxp" {
     /**
      * To get the list of plugins in the host, used during IPC(Inter Plugin Communication)
@@ -9462,7 +9481,13 @@ declare module "uxp" {
         /**
          * To get the current list of plugins in Plugin Manager.
          */
-        plugins: any;
+        PLUGINS_ADDED: "pluginsadded"
+        PLUGIN_ADDED: "pluginadded"
+        PLUGIN_DISABLED: "plugindisabled"
+        PLUGIN_ENABLED: "pluginenabled"
+        PLUGIN_REMOVED: "pluginremoved"
+        PLUGIN_UPDATED: "pluginupdated"
+        plugins: Set<PluginObject>;
     }
     export const pluginManager: PluginManager;
 }
