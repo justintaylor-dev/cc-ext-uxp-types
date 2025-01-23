@@ -1321,7 +1321,7 @@ declare class Path {
      * @param paths - paths to join
      * @returns joined string path
      */
-    join(paths: (string | Entry)[]): string;
+    join(...paths: (string | Entry)[]): string;
     /**
      * The right-most parameter is considered {to}. Other parameters are considered an array of {from}.
      *
