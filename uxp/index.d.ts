@@ -19,6 +19,8 @@
 
 declare module 'uxp' {
     namespace storage {
+
+        const localFileSystem: FileSystemProvider;
         /**
          * Common locations that we can use when displaying a file picker.
          */
@@ -143,6 +145,9 @@ declare module 'uxp' {
          * console.log(folderEntry.isEntry); // isEntry is an API of Entry, in this example it will return true
          * ```
          */
+
+        
+
         class Entry {
             /**
              * Indicates that this instance is an `Entry`. Useful for type-checking.
